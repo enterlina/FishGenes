@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[97]:
+# In[98]:
 
 
 from Bio import SeqIO
@@ -93,6 +93,6 @@ for i in range(len(Fish_DeepWater)):
     sequence_data = sequence_dictionary(sequence, replace_sequence)
     print('\n \n{0} {1} \n'.format(Fish_DeepWater[i].fish_id, Fish_DeepWater[i].fish_type))
     df=convert_panda(sequence_data)
-    df.insert(0, " compare with shallowater", ['MH796519.1','MH796519.1','-','-']) 
+    df.insert(0, " compare with shallowater", ['MH796519.1','MH796523.1','-','-']) 
     print(df)
 
