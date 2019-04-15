@@ -1,18 +1,19 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[59]:
 
 
 from Bio import SeqIO
 
 
 class FishGenes(object):
-    def __init__(self, fish_id=None, fish_type=None, sequence=None, fishes={'fishname':[],'number':[],'replace':[]}):
+    def __init__(self, fish_id=None, fish_type=None, sequence=None,
+                 fishes={'fishname': [], 'number': [], 'replace': []}):
         self.fish_id = fish_id
         self.fish_type = fish_type
         self.sequence = sequence
-        self.fishes={'fishname':[],'number':[],'replace':[]}
+        self.fishes = {'fishname': [], 'number': [], 'replace': []}
 
 
 def parse_fasta(reffilename, fish_type):
@@ -23,36 +24,58 @@ def parse_fasta(reffilename, fish_type):
     return Fish_List
 
 
-reffilename = '/Users/alena_paliakova/Google Drive/!Bioinf_drive/00_FishPr/genes_fasta/deep_water_al_test.fasta'
+def convert_files(reffilename, reffilename2):
+    Fish_DeepWater = []
+    Fish_ShalloWater = []
 
-reffilename2 = '/Users/alena_paliakova/Google Drive/!Bioinf_drive/00_FishPr/genes_fasta/shallowwater_al_test.fasta'
-
-Fish_DeepWater = []
-Fish_ShalloWater = []
-
-Fish_DeepWater = parse_fasta(reffilename, fish_type='deepwater')
-Fish_ShalloWater = parse_fasta(reffilename2, fish_type='shallowater')
+    Fish_DeepWater = parse_fasta(reffilename, fish_type='deepwater')
+    Fish_ShalloWater = parse_fasta(reffilename2, fish_type='shallowater')
+    return Fish_DeepWater, Fish_ShalloWater
 
 
+def get_numbers(sequence, replace_sequence):
+    repeated_elements = []
+    repeated_idx = []
+    repeated_sequence = []
+
+    for idx, val in enumerate(sequence):
+        if sequence.count(val) > 1:
+            repeated_elements.append(val)
+            repeated_idx.append(idx)
+            repeated_sequence.append(replace_sequence[idx])
+    return repeated_elements, repeated_sequence
+
+
+def sequence_dictionary(repeat_sequence, replace_sequence):
+    sequence_dictionary = dict()
+    for i in range(len(repeat_sequence)):
+        key = repeat_sequence[i]
+        if key not in sequence_dictionary:
+            sequence_dictionary[key] = []
+        sequence_dictionary[repeat_sequence[i]].append(replace_sequence[i])
+    return sequence_dictionary
+
+
+reffilename = '/Users/alena_paliakova/Google Drive/!Bioinf_drive/00_FishPr/genes_fasta/deep_water_al_test2.fasta'
+reffilename2 = '/Users/alena_paliakova/Google Drive/!Bioinf_drive/00_FishPr/genes_fasta/shallowwater_al_test2.fasta'
+
+Fish_DeepWater, Fish_ShalloWater = convert_files(reffilename, reffilename2)
 
 for i in range((len(Fish_DeepWater))):
     for j in range(len(Fish_ShalloWater)):
         Fish_DeepWater[i].fishes['fishname'].append(Fish_ShalloWater[j].fish_id)
         for k in range(len(Fish_ShalloWater[j].sequence)):
-            if (Fish_DeepWater[i].sequence[k]!='-') and (Fish_ShalloWater[j].sequence[k]!='-')and (Fish_DeepWater[i].sequence[k]!=Fish_ShalloWater[j].sequence[k]):
-                Fish_DeepWater[i].fishes['number'].append([k])
-                Fish_DeepWater[i].fishes['replace'].append([Fish_DeepWater[i].sequence[k]+Fish_ShalloWater[j].sequence[k]])
-    
-# for i in range(len(Fish_DeepWater)):
-#     print(Fish_DeepWater[i].fish_id, Fish_DeepWater[i].fish_type, Fish_DeepWater[i].sequence)
-    
-# for i in range(len(Fish_ShalloWater)):
-#     print(Fish_ShalloWater[i].fish_id, Fish_ShalloWater[i].fish_type, Fish_ShalloWater[i].sequence)  
-   
-    
+            if (Fish_DeepWater[i].sequence[k] != '-') and (Fish_ShalloWater[j].sequence[k] != '-') and (
+                    Fish_DeepWater[i].sequence[k] != Fish_ShalloWater[j].sequence[k]):
+                Fish_DeepWater[i].fishes['number'].append(k)
+                Fish_DeepWater[i].fishes['replace'].append(
+                    Fish_DeepWater[i].sequence[k] + Fish_ShalloWater[j].sequence[k])
+
 for i in range(len(Fish_DeepWater)):
-    print(Fish_DeepWater[i].fish_id, Fish_DeepWater[i].fish_type, Fish_DeepWater[i].fishes)
-    
-    
-    
+    sequence = Fish_DeepWater[i].fishes['number']
+    replace_sequence = Fish_DeepWater[i].fishes['replace']
+    print('Рыба {0} из {1} \n'.format(Fish_DeepWater[i].fish_id, Fish_DeepWater[i].fish_type))
+    print(
+        'Сравнивается с рыбами shallowater {0} \n\nПоследовательность замен: \n \nИндекс: НуклеотидРыбы_DeepWater&НуклеотидРыбы_ShalloWater \n \n {1}\n'.format(
+            Fish_DeepWater[i].fishes['fishname'], sequence_dictionary(sequence, replace_sequence)))
 
