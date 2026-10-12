@@ -1,33 +1,37 @@
-# Adaptation of the fish to depth
+# FishGenes: Rhodopsin and Adaptation to Depth
 
-[presentation slides](https://github.com/enterlina/FishGenes/blob/master/Polyakova%2C%20Namyatova%20-%20Adaptation%20of%20the%20fish%20to%20depth.pdf) 
+A collaborative bioinformatics study comparing rhodopsin (RH1) nucleotide and amino acid sequences in deep-water and shallow-water fish. The project asks whether unrelated deep-water fish show recurring sequence changes that could be explored in relation to adaptation to low-light environments.
 
-## Project Description
+**Project team:** Polyakova and Namyatova, as credited in the original presentation. Elena Dalboni da Rocha contributed under the name Elena Polyakova.
 
-Living in the depth claims specific adaptations. 
+[View the original project presentation](https://github.com/enterlina/FishGenes/blob/master/Polyakova%2C%20Namyatova%20-%20Adaptation%20of%20the%20fish%20to%20depth.pdf)
 
-There is a correlation between the light wavelength the fish eye can catch and the depth.
+## Analysis workflow
 
-The vast majority of deep-sea fish have only a single visual pigment (rhodopsin) with the maximum wavelength around 468–492 nm, whereas other fish have more than one rhodopsin with different wavelengths.
+- Compare sequence changes and amino acid replacements between fish groups.
+- Count nucleotide and amino acid frequencies.
+- Summarize patterns in tables and histograms for exploratory interpretation.
 
-## Goal
-To analyse the rhodopsin gene and protein (rh1) in the deep water fish and compare the nucleotide and amino acid changes to find out if there are any specific changes that occur in the non-related deep water fishes. 
+## Repository guide
 
-## Source
+| Resource | Purpose |
+| --- | --- |
+| [FishGenes.ipynb](FishGenes.ipynb) | Amino acid replacement analysis |
+| [FishGenes_amino_frequency_histogram.ipynb](FishGenes_amino_frequency_histogram.ipynb) | Amino acid frequency visualization |
+| [FishGenes_nucleotide_frequency.ipynb](FishGenes_nucleotide_frequency.ipynb) | Nucleotide frequency analysis |
+| [FishGenes_get_frequency.py](FishGenes_get_frequency.py) | Counting replacement frequencies from a sequence-comparison table |
+| [data](data/) | Source data included with the project |
+| [result](result/) | Saved analysis outputs |
+| [img](img/) | Figures |
 
-![Alt text](img/FishGenes_amino_histogram.png?raw=true "Aminoacids histogram")
+![Amino acid frequency histogram from the FishGenes project](img/FishGenes_amino_histogram.png?raw=true)
 
-### Data
-folder with Data sources
-### Result
-folder with Script results
-### Scripts:
-#### Amino Histogram Calculation:
-FishGenes_amino_frequency_histogram.ipynb
-#### Amino Replacement Calculation:
-FishGenes.ipynb
+## Tools and scope
 
+Python, pandas, and Jupyter notebooks. This educational research project contains exploratory comparisons; sequence-frequency patterns alone do not establish a causal mechanism of adaptation. Refer to the original presentation for the project's interpretation.
 
+Some scripts reference local input and output paths. Update those paths to your working copy and review the supplied data before rerunning. The original computational environment is not pinned.
 
+## Author
 
-
+Elena Dalboni da Rocha · [Portfolio and current work](https://buildnxt.app) · [GitHub](https://github.com/enterlina)
