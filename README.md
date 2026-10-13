@@ -2,7 +2,11 @@
 
 A collaborative bioinformatics study comparing rhodopsin (RH1) nucleotide and amino acid sequences in deep-water and shallow-water fish. The project asks whether unrelated deep-water fish show recurring sequence changes that could be explored in relation to adaptation to low-light environments.
 
-**Project team:** Polyakova and Namyatova, as credited in the original presentation. Elena Dalboni da Rocha contributed under the name Elena Polyakova.
+**Project team:** Elena Polyakova and Anna Namyatova. Elena Dalboni da Rocha contributed under her previous name, Elena Polyakova.
+
+**Academic context:** Spring 2019 research project at the Bioinformatics Institute. Supervised by Nadezhda Potapova, Faculty of Bioengineering and Bioinformatics, Moscow State University.
+
+[Institute project presentation (PDF)](https://bioinformaticsinstitute.ru/sites/default/files/polyakova_namyatova_-_adaptation_of_the_fish_to_depth.pdf) · [Graduate profile and project record](https://bioinf.me/graduates2018-19#!/tab/259037411-2)
 
 [View the original project presentation](https://github.com/enterlina/FishGenes/blob/master/Polyakova%2C%20Namyatova%20-%20Adaptation%20of%20the%20fish%20to%20depth.pdf)
 
